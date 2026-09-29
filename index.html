@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>张三 | 个人主页</title>
+  <style>
+    :root {
+      --bg: #f7f7f7;
+      --card: #fff;
+      --text: #222;
+      --muted: #666;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #ddd;
+    }
+    h1 { margin: 0; font-size: 2rem; }
+    .tagline { color: var(--muted); margin: 4px 0 0; }
+    section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.06);
+    }
+    h2 { margin-top: 0; font-size: 1.25rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 32px;
+      font-size: .9rem;
+    }
+    @media (max-width: 500px) {
+      header { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img class="avatar" src="avatar.jpg" alt="头像">
+      <div>
+        <h1>张三</h1>
+        <p class="tagline">前端开发者 / 摄影爱好者</p>
+      </div>
+    </header>
+
+    <section>
+      <h2>关于我</h2>
+      <p>你好，我是张三。我专注于 Web 前端开发，喜欢把想法做成可以点击的页面。</p>
+    </section>
+
+    <section>
+      <h2>项目</h2>
+      <ul>
+        <li><a href="#">项目一</a> - 一个待办事项应用</li>
+        <li><a href="#">项目二</a> - 个人摄影作品集</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>联系我</h2>
+      <p>邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
+      <p>GitHub：<a href="https://github.com/yourname">github.com/yourname</a></p>
+    </section>
+
+    <footer>© 2025 张三. All rights reserved.</footer>
+  </div>
+</body>
+</html>

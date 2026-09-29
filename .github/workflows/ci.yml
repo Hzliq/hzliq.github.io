@@ -1,0 +1,45 @@
+# ============================================================
+#  自动化工作流：每次推送到 main 分支
+#  GitHub 就会自动安装 mkdocs-material、构建网站，
+#  并把构建结果发布到 gh-pages 分支（GitHub Pages 从这里取文件）
+# ============================================================
+
+name: 构建并发布网站
+
+on:
+  push:
+    branches: [main]      # 只有推送到 main 分支才自动运行
+  workflow_dispatch:      # 也允许在网页上手动点按钮运行
+
+# 允许工作流把构建结果写回仓库（即推送到 gh-pages 分支）
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. 取出仓库代码
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0            # 取完整历史，发布工具需要
+
+      - name: 2. 安装 Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: 3. 安装 mkdocs-material
+        run: pip install mkdocs-material
+
+      - name: 4. 先试构建一遍（提前暴露配置错误）
+        run: mkdocs build
+
+      - name: 5. 设置提交身份（发布时要用）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: 6. 发布到 gh-pages 分支
+        run: mkdocs gh-deploy --force
